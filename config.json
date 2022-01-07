@@ -1,6 +1,6 @@
 {
   
-  "default_prefix": "kiro ",
+  "default_prefix": "evee ",
     "owners": "770864139244535809, 854027884410175518",
    "guildid": "891385750027903046",
    "emoji": {
@@ -12,7 +12,7 @@
         "error": "❌",
  "YOUTUBE_API_KEY": "",
  "premium": "770864139244535809",
- "PREFIX": "kiro ",
+ "PREFIX": "evee ",
  "mongodb": "kiroku",
  "database": "kiroku",
  "BOT_ID": "870916584590409739",
