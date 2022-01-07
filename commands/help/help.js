@@ -29,7 +29,7 @@ module.exports = {
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription('**Kiroko bot with 150+ commnds and 10+ category ** \n**If u got any error do ** `kiro bug` **your bug must be 10 ltters **')
+        .setDescription('**Evee bot with 150+ commnds and 10+ category ** \n**If u got any error do ** `evee bug` **your bug must be 10 letters **')
 
         .setColor("BLUE")
         .setFooter(client.user.username, client.user.displayAvatarURL())
