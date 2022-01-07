@@ -138,7 +138,7 @@ require('http').createServer((req, res) => res.end('Kiro is Alive')).listen(3000
 
 client.on
 client.on("ready", () => {
-  client.user.setActivity("kiro help", { type: "WATCHING" })
+  client.user.setActivity("evee help", { type: "LISTENING" })
 })
 const { Player } = require("discord-music-player");
 const player = new Player(client, {
