@@ -1,13 +1,11 @@
-
-"$TOEKN"
-// if you need help ask in the help channel dont dm me
- const { default_prefix } = require("./config.json")
- const fetch = require("node-fetch");
-const db =require("quick.db");
+require('dotenv').config()
+const { default_prefix } = require("./config.json")
+const fetch = require("node-fetch");
+const db = require("quick.db");
 const moment = require("moment");
 const { CanvasSenpai } = require("canvas-senpai")
 const canva = new CanvasSenpai();
-const { emotes , emoji} =require("./config.json")
+const { emotes, emoji } = require("./config.json")
 const discord = require("discord.js");
 const client = new discord.Client({
   disableEveryone: false
@@ -27,9 +25,9 @@ client.aliases = new discord.Collection();
 client.queue = new Map()
 process.on('unhandledRejection', console.error);
 
-  
+
 client.on("message", async message => {
- 
+
 
   if (message.author.bot) return;
   if (!message.guild) return;
@@ -63,15 +61,15 @@ client.on("guildMemberAdd", async member => {
     return;
 
   }
- let data = await canva.welcome(member, { link: "https://cdn.discordapp.com/attachments/815889737750544405/827575020338675822/welcome_imgae.png",blur: false }) 
-   const attachment = new discord.MessageAttachment(
+  let data = await canva.welcome(member, { link: "https://cdn.discordapp.com/attachments/815889737750544405/827575020338675822/welcome_imgae.png", blur: false })
+  const attachment = new discord.MessageAttachment(
 
-      data,
+    data,
 
-      "welcome-image.png"
+    "welcome-image.png"
 
-    );
- client.channels.cache.get(chx).send(`Welcome to ${member.guild.name}, Server ${member.user}\nYou are our ${member.guild.memberCount}th Member. Enjoy `, attachment);
+  );
+  client.channels.cache.get(chx).send(`Welcome to ${member.guild.name}, Server ${member.user}\nYou are our ${member.guild.memberCount}th Member. Enjoy `, attachment);
 
 });
 
@@ -79,126 +77,7 @@ client.on("guildMemberAdd", async member => {
 
 
 client.on("message", async message => {
-if (message.channel.name == "chatbot") {
-if (message.author.bot) return;
-message.content = message.content.replace(/@(everyone)/gi, "everyone").replace(/@(here)/gi, "here");
-if (message.content.includes(`@`)) {
-return message.channel.send(`**:x: Please dont mention anyone**`);
- }
-  message.channel.startTyping();
-if (!message.content) return message.channel.send("Please say something.");
-fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(message.content)}&botname=${client.user.username}&ownername=cwkhan`)
-    .then(res => res.json())
-    .then(data => {
-        message.channel.send(`> ${message.content} \n <@${message.author.id}> ${data.message}`);
-    });
-      message.channel.stopTyping();
-}
-});
-
-client.snipes = new Map()
-client.on('messageDelete', function(message, channel){
-  
-  client.snipes.set(message.channel.id, {
-    content:message.content,
-    author:message.author.tag,
-    image:message.attachments.first() ? message.attachments.first().proxyURL : null
-  })
-  
-})
- 
-
-const { GiveawaysManager } = require("discord-giveaways");
-const manager = new GiveawaysManager(client, {
-    storage: "./handlers/giveaways.json",
-    updateCountdownEvery: 10000,
-    default: {
-        botsCanWin: false,
-        exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
-        embedColor: "#FF0000",
-        reaction: "🎉"
-    }
-});
-
-client.giveawaysManager = manager;
-
-client.on("message", async message => {
-if(!message.guild) return;
-  let prefix = db.get(`default_prefix${message.guild.id}`)
-  if(prefix === null) prefix =default_prefix;
-  
-  if(!message.content.startsWith(default_prefix)) return;
- 
-})
-client.on("ready", () => {
-    client.user.setStatus("online");
-    console.log("automodv12 beta is ready join support server https://dsc.gg/kmdevs")
-});
-
- require('http').createServer((req, res) => res.end('AutomodBot is alive! Join support server https;//dsc.gg/cwkhan')).listen(3000)
-
-
-client.on
-client.on("ready", () => {
-    client.user.setActivity("qhelp|Made By cwkhan ", { type: "PLAYING"})
-})
-const { Player } = require("discord-music-player");
-const player = new Player(client, {
-    leaveOnEmpty: false,
-});
-
-client.player = player;
-
-new Player(client, {
-    leaveOnEnd: true,
-    leaveOnStop: true,
-    leaveOnEmpty: true,
-    timeout: 10,
-    volume: 150,
-    quality: 'high',
-});
-const fs = require('fs')
-
-
- client.on('guildCreate', guild =>{
-
-    const channelId = '841994461126197248'; //put your channel ID here
-
-    const channel = client.channels.cache.get(channelId); 
-     
-    if(!channel) return; //If the channel is invalid it returns
-    const embed = new discord.MessageEmbed()
-        .setTitle('I Joined A Guild!')
-        .setDescription(`**Guild Name:** ${guild.name} (${guild.id})\n**Members:** ${guild.memberCount}`)
-        .setTimestamp()
-        .setColor('RANDOM')
-        .setFooter(`I'm in ${client.guilds.cache.size} Guilds Now!`);
-    channel.send(embed);
-});
-
-
-client.on('guildDelete', guild =>{
-    const channelId = '841994754399928341';//add your channel ID
-    const channel = client.channels.cache.get(channelId); //This Gets That Channel
-    
-    if(!channel) return;  //If the channel is invalid it returns
-    const embed = new discord.MessageEmbed()
-        .setTitle('I Left A Guild!')
-        .setDescription(`**Guild Name:** ${guild.name} (${guild.id})\n**Members:** ${guild.memberCount}`)
-        .setTimestamp()
-        .setColor('RED')
-        .setFooter(`I'm in ${client.guilds.cache.size} Guilds Now!`);
-    channel.send(embed);
-});
-
- 
-console.log("Subscribe on yt cwkhan")
-
-const smartestchatbot = require('smartestchatbot')
-const scb = new smartestchatbot.Client()
-
-client.on("message", async message => {
-  if (message.channel.name == "abotchat") {
+  if (message.channel.name == "chatbot") {
     if (message.author.bot) return;
     message.content = message.content.replace(/@(everyone)/gi, "everyone").replace(/@(here)/gi, "here");
     if (message.content.includes(`@`)) {
@@ -206,8 +85,125 @@ client.on("message", async message => {
     }
     message.channel.startTyping();
     if (!message.content) return message.channel.send("Please say something.");
-    scb.chat({message: message.content, name: client.user.username, owner:"cwkhan", user: message.author.id, language:"auto"}).then(reply => {
-    message.inlineReply(`${reply}`);
+    fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(message.content)}&botname=${client.user.username}&ownername=HyperxCraft&age=13&birthyear=2022&birthplace=India&build=HyperxV1Beata&city=Nagpur&company=HyperxNetwork&country=India&email=rxpinetwork@gmail.com&job=NoJob&favoritesport=Nothing&version=HyperxV1&state=Maharastra&religion=Hindu&president=RamNathKovind&physicallocation=Mumbai`)
+      .then(res => res.json())
+      .then(data => {
+        message.channel.send(`> ${message.content} \n <@${message.author.id}> ${data.message}`);
+      });
+    message.channel.stopTyping();
+  }
+});
+
+client.snipes = new Map()
+client.on('messageDelete', function (message, channel) {
+
+  client.snipes.set(message.channel.id, {
+    content: message.content,
+    author: message.author.tag,
+    image: message.attachments.first() ? message.attachments.first().proxyURL : null
+  })
+
+})
+
+
+const { GiveawaysManager } = require("discord-giveaways");
+const manager = new GiveawaysManager(client, {
+  storage: "./handlers/giveaways.json",
+  updateCountdownEvery: 10000,
+  default: {
+    botsCanWin: false,
+    exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
+    embedColor: "#FF0000",
+    reaction: "🎉"
+  }
+});
+
+client.giveawaysManager = manager;
+
+client.on("message", async message => {
+  if (!message.guild) return;
+  let prefix = db.get(`default_prefix${message.guild.id}`)
+  if (prefix === null) prefix = default_prefix;
+
+  if (!message.content.startsWith(default_prefix)) return;
+
+})
+client.on("ready", () => {
+  client.user.setStatus("online");
+  console.log(`${client.user.tag} is online ✅`)
+});
+
+require('http').createServer((req, res) => res.end('Kiro is Alive')).listen(3000)
+
+
+client.on
+client.on("ready", () => {
+  client.user.setActivity("kiro help", { type: "WATCHING" })
+})
+const { Player } = require("discord-music-player");
+const player = new Player(client, {
+  leaveOnEmpty: false,
+});
+
+client.player = player;
+
+new Player(client, {
+  leaveOnEnd: true,
+  leaveOnStop: true,
+  leaveOnEmpty: true,
+  timeout: 10,
+  volume: 150,
+  quality: 'high',
+});
+const fs = require('fs')
+
+
+client.on('guildCreate', guild => {
+
+  const channelId = '928726809799962644'; //put your channel ID here
+
+  const channel = client.channels.cache.get(channelId);
+
+  if (!channel) return; //If the channel is invalid it returns
+  const embed = new discord.MessageEmbed()
+    .setTitle('I Joined A Guild!')
+    .setDescription(`**Guild Name:** ${guild.name} (${guild.id})\n**Members:** ${guild.memberCount}`)
+    .setTimestamp()
+    .setColor('RANDOM')
+    .setFooter(`I'm in ${client.guilds.cache.size} Guilds Now!`);
+  channel.send(embed);
+});
+
+
+client.on('guildDelete', guild => {
+  const channelId = '928726809799962644';//add your channel ID
+  const channel = client.channels.cache.get(channelId); //This Gets That Channel
+
+  if (!channel) return;  //If the channel is invalid it returns
+  const embed = new discord.MessageEmbed()
+    .setTitle('I Left A Guild!')
+    .setDescription(`**Guild Name:** ${guild.name} (${guild.id})\n**Members:** ${guild.memberCount}`)
+    .setTimestamp()
+    .setColor('RED')
+    .setFooter(`I'm in ${client.guilds.cache.size} Guilds Now!`);
+  channel.send(embed);
+});
+
+
+const smartestchatbot = require('smartestchatbot')
+const scb = new smartestchatbot.Client()
+
+client.on("message", async message => {
+  if (message.channel.name == "kiro-chat") {
+    if (message.author.bot) return;
+    message.content = message.content.replace(/@(everyone)/gi, "everyone").replace(/@(here)/gi, "here");
+    if (message.content.includes(`@`)) {
+      return message.channel.send(`**:x: Please dont mention anyone**`);
+    }
+    message.channel.startTyping();
+    if (!message.content) return message.channel.send("Please say something.");
+    scb.chat({ message: message.content, name: client.user.username, owner: "cwkhan", user: message.author.id, language: "auto" }).then(reply => {
+      message.inlineReply(`${reply}`);
     })
     message.channel.stopTyping();
   }
@@ -217,11 +213,10 @@ client.on("message", async message => {
 require("./ExtendedMessage");
 
 
-    allowedMentions: {
-        // set repliedUser value to `false` to turn off the mention by default
-        repliedUser: true
-    }
-    
-    
+allowedMentions: {
+  // set repliedUser value to `false` to turn off the mention by default
+  repliedUser: true
+}
+
 
 client.login(process.env.TOKEN);

@@ -5,7 +5,7 @@ module.exports = {
     name: 'eval',
     category: 'owner',
     run: async (client, message, args) => {
-        if (message.author.id !== '682981714523586606') return message.channel.send("You do not have permission to use this command!");
+        if (message.author.id !== '770864139244535809') return message.channel.send("You do not have permission to use this command!");
         const embed = new MessageEmbed()
             .setTitle('Evaluating...')
         const msg = await message.channel.send(embed);
@@ -14,7 +14,7 @@ module.exports = {
             const embed = new MessageEmbed()
                 .setTitle('output:')
                 .setDescription(await data)
-            .setColor('GREEN')
+                .setColor('GREEN')
             await msg.edit(embed)
             await msg.react('✅')
             await msg.react('❌')

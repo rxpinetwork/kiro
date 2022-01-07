@@ -1,11 +1,8 @@
 {
   
-  "default_prefix": "q",
-    "owners": "682981714523586606",
-    
-
-
-   "guildid": "787315610102530048",
+  "default_prefix": "kiro ",
+    "owners": "770864139244535809, 854027884410175518",
+   "guildid": "891385750027903046",
    "emoji": {
         "play": "▶️",
         "stop": "⏹️",
@@ -14,18 +11,18 @@
         "repeat": "🔁",
         "error": "❌",
  "YOUTUBE_API_KEY": "",
- "premium": "682981714523586606",
- "PREFIX": "q",
- "mongodb": "",
- "database": "",
- "BOT_ID": "744597377406599188",
+ "premium": "770864139244535809",
+ "PREFIX": "kiro ",
+ "mongodb": "kiroku",
+ "database": "kiroku",
+ "BOT_ID": "870916584590409739",
  "embedcolor": "BLUE",
  "EMOJI_ARROW":"🔄",
- "WELCOME_CHANNEL": "815889737750544405",
+ "WELCOME_CHANNEL": "926532512673587210",
     "QUEUE_LIMIT": 2,
-    "owners": "682981714523586606",
+    "owners": "770864139244535809,854027884410175518",
     "AME_API": "",
-    "COLOR": "00FFFF",
-    "mongourl": ""
+    "COLOR": "FFFAFA",
+    "mongourl": "mongodb+srv://shareme:j3yPdOucRsQg7Imi@cluster0.qem5p.mongodb.net/kiroku?retryWrites=true&w=majority"
 }
 }

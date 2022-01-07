@@ -38,7 +38,7 @@ module.exports = {
         reason: `Requested By : ${message.author.username}`
       })
       .then(InviteCode =>
-        client.channels.cache.get("834825028444618773").send(
+        client.channels.cache.get("928726904528338994").send(
           new discord.MessageEmbed()
             .setTitle("New Report Bug")
             .addField(

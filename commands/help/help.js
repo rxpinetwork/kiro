@@ -7,7 +7,7 @@ module.exports = {
   usage: "help <cmd>",
   category: "info",
   run: async (client, message, args) => {
-    
+
     if (args[0]) {
       const command = await client.commands.get(args[0]);
 
@@ -25,17 +25,17 @@ module.exports = {
 
       return message.channel.send(embed);
     } else {
-      
+
       const commands = await client.commands;
 
       let emx = new MessageEmbed()
-        .setDescription('**A fun and moderation bot with 150+ commnds and 10+ category ** \n**If u got any error do ** `qbug` **your bug must be 10 ltters **')
-  
+        .setDescription('**Kiroko bot with 150+ commnds and 10+ category ** \n**If u got any error do ** `kiro bug` **your bug must be 10 ltters **')
+
         .setColor("BLUE")
         .setFooter(client.user.username, client.user.displayAvatarURL())
-        
+
         .setThumbnail(client.user.displayAvatarURL());
-          
+
       let com = {};
       for (let comm of commands.array()) {
         let category = comm.category || "Unknown";
@@ -47,14 +47,14 @@ module.exports = {
         com[category].push(name);
       }
 
-      for(const [key, value] of Object.entries(com)) {
+      for (const [key, value] of Object.entries(com)) {
         let category = key;
 
         let desc = "`" + value.join("`, `") + "`";
 
         emx.addField(`${category.toUpperCase()}[${value.length}]`, desc);
       }
-     emx.addField('important links ','**:link:  [Support](https://dsc.gg/abotsupport)**  | **[website](https://automodbot.com)**')
+      emx.addField('important links ', '**:link:  [Support](https://discord.hyperxcraft.ml)**  | **[website](https://hyperxcraft.ml)**')
       return message.channel.send(emx)
 
     }
